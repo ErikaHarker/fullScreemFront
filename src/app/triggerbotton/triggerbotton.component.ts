@@ -11,7 +11,7 @@ export class TriggerbottonComponent implements OnInit {
   public messageErrorPopup: Boolean;
   public messageSavePopup: Boolean;
 
-  public on_off_botton: Boolean;
+  public myonoffswitch: Boolean;
   public on_off: Boolean = false;
   public server : string;
   public values: string[] = [];
@@ -28,22 +28,18 @@ export class TriggerbottonComponent implements OnInit {
   }
 
   onClickBotton(event : any){
-    if (this.on_off){
-      this.on_off = false;
-    }else{
-      this.on_off = true;
-    }
-
     this.waitRes = true;
     this.messageErrorPopup = false;
+    this.messageSavePopup = false;
 
-    let statusButton = { "status_button": this.on_off};
+    let statusButton = { "status_button": this.myonoffswitch};
 
     this.newData(statusButton)
         .then((res)=> {
           console.log("ok");
           this.waitRes = false;
           this.messageSavePopup = true;
+          this.myonoffswitch = false;
 
         }).catch( err =>{
           console.log(err);
@@ -51,8 +47,6 @@ export class TriggerbottonComponent implements OnInit {
           this.waitRes = false;
           this.messageErrorPopup = true;
       });
-
-    console.log(this.on_off_botton)
     return;
   }
 
