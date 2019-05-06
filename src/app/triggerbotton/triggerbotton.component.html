@@ -1,0 +1,24 @@
+
+
+<div class="centerswitch onoffswitch">
+  <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" 
+  id="myonoffswitch" value="{{on_off_botton}}" (change)="onClickBotton($event.target.value)">
+  <label class="onoffswitch-label" for="myonoffswitch">
+      <span class="onoffswitch-inner"></span>
+      <span class="onoffswitch-switch"></span>
+  </label>
+</div>
+
+<br>
+
+<div class="col-md-8 mx-auto">
+    <div class="alert alert-dismissible alert-info text-center" *ngIf="waitRes">
+      <strong>Waiting ... </strong> <a class="alert-link">Waiting for a response from the server</a>
+    </div>
+    <div class="alert alert-dismissible alert-error text-center" *ngIf="messageErrorPopup">
+      <strong>Oh snap!</strong> <a  class="alert-link">There is a problen in the server</a> and try submitting again.
+    </div>
+    <div class="alert alert-dismissible alert-success text-center" *ngIf="messageSavePopup">
+      <strong>Data save!</strong> <a  class="alert-link"> Information has been saved correctly</a> 
+    </div>
+  </div>
